@@ -9,6 +9,22 @@ class TodoList
         item = Item.new(new_item)
         @items.push(item)
     end
+    def remove_item(item_location)
+    	@items.delete_at(item_location)
+    end
+    def display
+    	p @title
+    	@items.each do |print|
+    		p print
+    	end
+    	p ("*" * 33)
+    end
+    def completed_status(location,status)
+    	@items
+    end
+    def update_title(new_title)
+    	@title = new_title
+    end
 end
 
 class Item
