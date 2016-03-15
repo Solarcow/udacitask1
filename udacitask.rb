@@ -18,10 +18,11 @@ thing.remove_item(1)
 # Print the list
 thing.display
 # Update the completion status of the first item to complete
-
+thing.update_complete(0)
 # Print the list
 thing.display
 # Update the title of the list
-thing.update_title("pants")
+thing.update_title("Pants")
 # Print the list
 thing.display
+thing.file_save

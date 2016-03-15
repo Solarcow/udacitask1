@@ -15,15 +15,21 @@ class TodoList
     def display
     	p @title
     	@items.each do |print|
-    		p print
+    		print.clean_print
+    		p ("-" * 33)
     	end
-    	p ("*" * 33)
     end
-    def completed_status(location,status)
-    	@items
+    def update_complete(location)
+    	@items[location].completed?
     end
     def update_title(new_title)
     	@title = new_title
+    end
+    def file_save
+    	@save = File.new("task list.txt", "w+")
+    	@save.puts(@title)
+    	@save.write(@items)
+    	@save.close
     end
 end
 
@@ -33,5 +39,18 @@ class Item
     def initialize(item_description)
         @description = item_description
         @completed_status = false
+        @time_created = Time.now.strftime("%H:%M")
+     end
+     def completed?
+     	@completed_status = true
+     	@completed_time = Time.now.strftime("%H:%M")
+     end
+     def clean_print
+     	p "Test Description: #{@description}"
+     	p "Completed Status: #{@completed_status}"
+     	p "Time Created: #{@time_created}"
+     	if @completed_status == true 
+     		p "Time Completed #{@completed_time}"
+     	end
      end
 end
