@@ -20,7 +20,9 @@ class TodoList
     	end
     end
     def update_complete(location)
-    	@items[location].completed?
+    	if @items[location].completed? == false
+    		@items[location].complete_task
+    	end
     end
     def update_title(new_title)
     	@title = new_title
@@ -42,6 +44,9 @@ class Item
         @time_created = Time.now.strftime("%H:%M")
      end
      def completed?
+     	@completed_status
+     end
+     def complete_task
      	@completed_status = true
      	@completed_time = Time.now.strftime("%H:%M")
      end
